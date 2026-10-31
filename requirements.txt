@@ -1,0 +1,2 @@
+opencv-python
+mediapipe  # needs a version that still has the legacy mp.solutions API (e.g. 0.10.x)
