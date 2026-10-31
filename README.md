@@ -20,7 +20,7 @@ Webcam -> OpenCV + MediaPipe (count fingers) -> UDP over Wi-Fi -> ESP32 (MicroPy
 ```
 
 1. `gestured_file.py` runs on the laptop. It reads the webcam, finds the hand with MediaPipe landmarks, counts the extended fingers and sends the number to the ESP32 as a UDP packet (port 4210).
-2. `esp32_2.py` runs on the ESP32. It joins Wi-Fi, listens for the UDP packets and drives the motors through the TB6612FNG.
+2. `esp32.py` runs on the ESP32. It joins Wi-Fi, listens for the UDP packets and drives the motors through the TB6612FNG.
 3. **Safety stop:** if no packet arrives for 0.1 s (hand out of view, Wi-Fi drop), the robot stops.
 4. `ip.py` is a small helper that connects the ESP32 to Wi-Fi and prints its IP address.
 
@@ -54,9 +54,9 @@ Motor A connects to A01/A02 and Motor B to B01/B02. Battery negative goes to GND
 
 **ESP32**
 1. Flash MicroPython onto the ESP32.
-2. In `ip.py` and `esp32_2.py`, set `WIFI_SSID` and `WIFI_PASSWORD` to your own Wi-Fi.
+2. In `ip.py` and `esp32.py`, set `WIFI_SSID` and `WIFI_PASSWORD` to your own Wi-Fi.
 3. Run `ip.py` once and note the IP address it prints.
-4. Save `esp32_2.py` on the ESP32 as `main.py` so it starts on power-up.
+4. Save `esp32.py` on the ESP32 as `main.py` so it starts on power-up.
 
 **Laptop** (on the same Wi-Fi network)
 ```
